@@ -1,5 +1,5 @@
 import User from '../model/user.model'
-import CONSTANTS from '../config/constants.config';
+import CONSTANTS from '../constants/error.constants';
 
 export const save = (req, res) => {
     if (!req || !req.body)
