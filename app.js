@@ -13,6 +13,9 @@ app.server = http.createServer(app);
 
 // logger
 app.use(morgan('dev'));
+
+// apply body parser
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
@@ -25,9 +28,13 @@ app.post('/login', (req, res) => {
     user.login(req, res);
 })
 
+app.get('/verifyToken', (req, res) => {
+    user.verifyToken(req, res);
+})
+
 database.connection()
 .then(() => {
-    app.server.listen(process.env.PORT || 8080, () => {
+    app.server.listen(process.env.PORT || 4000, () => {
         console.log(`Started on port ${app.server.address().port}`);
     });
 })
